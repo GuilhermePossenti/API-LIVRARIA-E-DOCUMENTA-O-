@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "26ba1480-a8b2-43f0-aa3e-55717924bda1",
+		"name": "Teste API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49225265",
+		"_collection_link": "https://guilhermepossenti-2269970.postman.co/workspace/API-Livaria~d80ff0dd-958b-4fb2-b4b7-536369cc7947/collection/49225265-26ba1480-a8b2-43f0-aa3e-55717924bda1?action=share&source=collection_link&creator=49225265"
+	},
+	"item": [
+		{
+			"name": "Listar livros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/livros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livros"
+					]
+				},
+				"description": "Esta requisição acessa o endpoint raiz da API Biblioteca Online. Ao enviar um GET para 'http://localhost:3000', você recebe uma visão geral dos principais endpoints disponíveis para gerenciar livros na biblioteca.\n\n**Endpoints disponíveis:**\n- **GET /livros**: Lista todos os livros cadastrados.\n- **GET /livros/:id**: Busca um livro específico pelo ID.\n- **POST /livros**: Adiciona um novo livro. Envie um JSON com: `titulo`, `autor`, `categoria`, `ano`.\n- **PUT /livros/:id**: Atualiza um livro existente pelo ID. Envie um JSON com: `titulo`, `autor`, `categoria`, `ano`.\n- **DELETE /livros/:id**: Remove um livro pelo ID.\n\n**Como usar:**\nUtilize esta requisição para verificar se a API está ativa e consultar rapidamente os endpoints e suas funções. Ideal como ponto de partida para explorar e testar a API Biblioteca Online."
+			},
+			"response": []
+		},
+		{
+			"name": "livro id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/livros/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livros",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar livro",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Clean Code - Código Limpo\",\r\n  \"autor\": \"Robert C. Martin\",\r\n  \"categoria\": \"Programação\",\r\n  \"ano\": 2009,\r\n  \"editora\": \"Alta Books\",\r\n  \"numeroPaginas\": 425\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/livros/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livros",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar livro",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/livros/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livros",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar livro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Design Patterns\",\r\n  \"autor\": \"Erich Gamma\",\r\n  \"categoria\": \"Programação\",\r\n  \"ano\": 1994,\r\n  \"editora\": \"Addison-Wesley\",\r\n  \"numeroPaginas\": 395\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/livros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livros"
+					],
+					"query": [
+						{
+							"key": "1",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
