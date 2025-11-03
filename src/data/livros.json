@@ -1,0 +1,25 @@
+[
+  {
+    "id": 4,
+    "titulo": "Clean Code",
+    "autor": "Robert C. Martin",
+    "categoria": "Programação",
+    "ano": 2008
+  },
+  {
+    "id": 2,
+    "titulo": "Algoritmos: Teoria e Prática",
+    "autor": "Thomas H. Cormen",
+    "categoria": "Ciência da Computação",
+    "ano": 1990,
+    "editora": "Elsevier",
+    "numeroPaginas": 926
+  },
+  {
+    "id": 5,
+    "titulo": "Design Patterns",
+    "autor": "Erich Gamma",
+    "categoria": "Programação",
+    "ano": 1994
+  }
+]
