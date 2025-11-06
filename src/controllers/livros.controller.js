@@ -3,6 +3,7 @@ const path = require("path");
 const RepositoryBase = require("./repository.interface");
 const Livro = require("../models/livro.model");
 
+
 class LivrosRepository extends RepositoryBase {
     constructor() {
         super();
@@ -21,26 +22,43 @@ class LivrosRepository extends RepositoryBase {
     }
 
     async create(livroData) {
-        const livros = await this.findAll();
-        const novoId = await this.getNextId();
-        const novoLivro = new Livro({ id: novoId, ...livroData });
-        livros.push(novoLivro);
-        await this._saveToFile(livros.map(l => l.toJSON()));
-        return novoLivro;
-    }
+    const livros = await this.findAll();
+    const novoId = await this.getNextId();
+    const novoLivro = new Livro({
+        id: novoId,
+        titulo: livroData.titulo,
+        autor: livroData.autor,
+        ano_publicacao: livroData.ano_publicacao,
+        genero: livroData.genero,
+        editora: livroData.editora,
+        numeroPaginas: livroData.numeroPaginas
+    });
+    livros.push(novoLivro);
+    await this._saveToFile(livros.map(l => l.toJSON()));
+    return novoLivro;
+}
+
 
     async update(id, dadosAtualizados) {
-        const livros = await this.findAll();
-        const indice = livros.findIndex(livro => livro.id === id);
-        if (indice === -1) {
-            const error = new Error("Livro não encontrado");
-            error.statusCode = 404;
-            throw error;
-        }
-        livros[indice] = new Livro({ ...livros[indice], ...dadosAtualizados });
-        await this._saveToFile(livros.map(l => l.toJSON()));
-        return livros[indice];
+    const livros = await this.findAll();
+    const indice = livros.findIndex(livro => livro.id === id);
+    if (indice === -1) {
+        const error = new Error("Livro não encontrado");
+        error.statusCode = 404;
+        throw error;
     }
+
+    const livroExistente = livros[indice];
+    livros[indice] = new Livro({
+        ...livroExistente,
+        ...dadosAtualizados,
+        id: livroExistente.id // garante que o ID não seja sobrescrito
+    });
+
+    await this._saveToFile(livros.map(l => l.toJSON()));
+    return livros[indice];
+}
+
 
     async delete(id) {
         const livros = await this.findAll();

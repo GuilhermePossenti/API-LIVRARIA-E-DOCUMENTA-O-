@@ -1,13 +1,16 @@
 class Livro {
-    constructor({ id = null, titulo, autor, categoria, ano, editora, numeroPaginas }) {
-        this.id = id !== undefined ? id : null;
-        this.titulo = String(titulo).trim();
-        this.autor = String(autor).trim();
-        this.categoria = String(categoria).trim();
-        this.ano = Number.isInteger(ano) ? ano : parseInt(ano, 10);
-        this.editora = editora ? String(editora).trim() : '';
-        this.numeroPaginas = numeroPaginas ? (Number.isInteger(numeroPaginas) ? numeroPaginas : parseInt(numeroPaginas, 10)) : null;
-        this._validar();
+    constructor({ id, titulo, autor, ano_publicacao, genero, editora, numeroPaginas }) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.ano_publicacao = ano_publicacao;
+        this.genero = genero;
+        this.editora = editora;
+        this.numeroPaginas = numeroPaginas;
+    }
+
+    static fromJSON(json) {
+        return new Livro(json);
     }
 
     _validar() {
@@ -55,8 +58,8 @@ class Livro {
             id: this.id,
             titulo: this.titulo,
             autor: this.autor,
-            categoria: this.categoria,
-            ano: this.ano,
+            ano_publicacao: this.ano_publicacao,
+            genero: this.genero,
             editora: this.editora,
             numeroPaginas: this.numeroPaginas
         };
